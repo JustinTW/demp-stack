@@ -1,0 +1,5 @@
+/opt/wallet-server/nginx/data/log/*.log {
+    size 100M
+    copytruncate
+    rotate 8
+}

@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  APPNAME:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.df
+    image: marsblockchain/APPNAME
+    container_name: APPNAME
+    hostname: APPNAME
+    volumes:
+      - ./data/shared:/data/shared:rw
+    #environment:
+    #  SERVICE_DISCOVERY: env
+    #ports:
+    #  - 172.16.0.100:4568:4568
+    #extra_hosts:
+    #  - google:8.8.8.8
+
+networks:
+  default:
+    external:
+      name: mars-service

@@ -1,0 +1,30 @@
+#!/bin/bash
+exec 2>&1
+
+export PATH=$PATH:/usr/local/bin
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+source $SCRIPTPATH/../../../.utils/bash/utils
+source $SCRIPTPATH/../../../.utils/bash/docker
+source $SCRIPTPATH/lib/backup
+
+function main (){
+
+
+  backup_mysql mysql-db-1 drone
+  backup_mysql mysql-db-1 mysql
+  backup_mysql mysql-db-1 polr
+  backup_mysql mysql-db-1 redmine_production
+  backup_mysql mysql-db-1 registry
+  backup_mysql mysql-db-1 snipeit
+  backup_mysql mysql-db-1 testlink_production
+
+  backup_pg pg-db-1 gitlabhq_production root Moxa89191230
+  backup_pg pg-db-1 taigadb root Moxa89191230
+
+  find /mnt/nas/backup/db-dump/mysql/mysql-db-1 -mtime +6 -exec rm {} \;
+  find /mnt/nas/backup/db-dump/pg/pg-db-1 -mtime +6 -exec rm {} \;
+
+}
+
+main $1
+

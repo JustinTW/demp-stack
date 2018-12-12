@@ -1,0 +1,5 @@
+FROM ubuntu:trusty
+
+ENTRYPOINT /usr/bin/tail -f /dev/null
+
+

@@ -1,0 +1,10 @@
+FROM python:2.7
+
+#RUN echo 'Acquire::http { Proxy "http://cache-apt:3142"; };' > /etc/apt/apt.conf.d/00-cache-apt && \
+#    apt-get update && apt-get install -q -y --force-yes --fix-missing wget sudo  && \
+#    wget -O - http://efss-url/9 | sudo bash
+
+RUN pip install slack-cleaner
+
+CMD tail -f /dev/null
+

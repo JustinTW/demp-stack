@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  ppga:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.df
+    image: marsblockchain/ppga
+    container_name: ppga
+    hostname: ppga
+    environment:
+      DB_HOST: pg-db-1
+      DB_PORT: 5432
+    #extra_hosts:
+    #  - pg-db-1:172.16.21.211
+    #  - db-02:172.16.0.101
+    #  - db-03:172.16.0.102
+networks:
+  default:
+    external:
+      name: mars-service

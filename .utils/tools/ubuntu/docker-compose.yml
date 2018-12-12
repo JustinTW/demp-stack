@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  ubuntu:
+    # restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.df
+    image: marsblockchain/ubuntu
+    container_name: ubuntu
+    hostname: ubuntu
+    volumes:
+      - ./data/shared:/data/shared:rw
+      - ./data/ubuntu:/data/ubuntu:rw
+    #environment:
+    #  SERVICE_DISCOVERY: env
+    #ports:
+    #  - 172.16.0.100:4568:4568
+    network_mode: host
+    #extra_hosts:
+    #  - google:8.8.8.8
+
+networks:
+  default:
+    external:
+      name: mars-service

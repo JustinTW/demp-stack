@@ -1,0 +1,5 @@
+FROM instrumentisto/nmap
+
+ENTRYPOINT /usr/bin/tail -f /dev/null
+
+

@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  nmap:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.df
+    image: marsblockchain/nmap
+    container_name: nmap
+    hostname: nmap.hopebaytech.com
+    volumes:
+      - ./data/shared:/data/shared:rw
+      - ./data/nmap:/data/nmap:rw
+    #environment:
+    #  SERVICE_DISCOVERY: env
+    #ports:
+    #  - 172.16.0.100:4568:4568
+    #extra_hosts:
+    #  - google:8.8.8.8
+
+networks:
+  default:
+    external:
+      name: mars-service

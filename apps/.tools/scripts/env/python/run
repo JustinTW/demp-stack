@@ -1,0 +1,16 @@
+#!/bin/bash
+exec 2>&1
+
+export PATH=$PATH:/usr/local/bin
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+source $SCRIPTPATH/../../../../../.utils/bash/utils
+source $SCRIPTPATH/../../../../../.utils/bash/docker
+source $SCRIPTPATH/../../../../../.utils/bash/run
+
+function main (){
+  run $1
+
+}
+
+main $1
+

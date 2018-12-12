@@ -1,0 +1,43 @@
+#!/bin/bash
+
+function escapeChars(){
+    printf '%q\n' "$1" | sed 's/\//\\\//g'
+}
+
+function backup_mysql (){
+  CTNAME=$(escapeChars ${1:-CTNAME})
+  DBNAME=$(escapeChars ${2:-NAME})
+  PWD=$(escapeChars ${3:-""})
+  DATETIME=`date +%Y%m%d%H%M`
+  NASDIR=/mnt/nas/backup/db-dump/mysql
+  printf "mysqldump: $NASDIR/$CTNAME/$DATETIME-$CTNAME.sql"
+  mkdir -p $NASDIR/$CTNAME
+  if [[ $PWD = *[!\ ]* ]]; then
+    sudo docker exec -i $CTNAME \
+      mysqldump -u root $DBNAME > \
+      $NASDIR/$CTNAME/$DATETIME-$CTNAME.sql
+  else
+    sudo docker exec -i $CTNAME \
+      mysqldump -u root $DBNAME -p$PWD > \
+      $NASDIR/$CTNAME/$DATETIME-$CTNAME.sql
+  fi
+  printf ", size: "
+  ls -alh $NASDIR/$CTNAME/$DATETIME-$CTNAME.sql | awk '{print $5}'
+}
+
+function backup_pg (){
+  CTNAME=$(escapeChars ${1:-CTNAME})
+  DBNAME=$(escapeChars ${2:-NAME})
+  PGUSER=$(escapeChars ${3:-""})
+  PGPWD=$(escapeChars ${4:-""})
+  DATETIME=`date +%Y%m%d%H%M`
+  NASDIR=/mnt/nas/backup/db-dump/pg
+  printf "pg_dump: $NASDIR/$CTNAME/$DATETIME-$CTNAME.sql"
+  mkdir -p $NASDIR/$CTNAME
+  sudo docker exec -i $CTNAME \
+    pg_dump $DBNAME -U $PGUSER -f /data/shared/$DATETIME-$CTNAME.sql
+  mv /opt/wallet-server/db/postgresql/db-1/data/shared/$DATETIME-$CTNAME.sql $NASDIR/$CTNAME/$DATETIME-$CTNAME.sql &>/dev/null
+  printf ", size: "
+  ls -alh $NASDIR/$CTNAME/$DATETIME-$CTNAME.sql | awk '{print $5}'
+}
+

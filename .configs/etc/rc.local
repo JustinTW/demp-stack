@@ -1,0 +1,5 @@
+sleep 90
+
+# bash /opt/wallet-server/.utils/bash/namecheap-ddns/cache
+# bash /opt/wallet-server/.utils/bash/namecheap-ddns/service
+

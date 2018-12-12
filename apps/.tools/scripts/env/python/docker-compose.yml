@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  pyenv:
+    # restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.df
+    image: marsblockchain/pyenv
+    container_name: pyenv
+    hostname: pyenv
+    volumes:
+      - ./data/shared:/data/shared:rw
+      - ./data/pyenv:/data/pyenv:rw
+    environment:
+      http_proxy: http://cache:3128
+      https_proxy: http://cache:3128
+      ftp_proxy: http://cache:3128
+    #ports:
+    #  - 172.16.0.100:4568:4568
+    #extra_hosts:
+    #  - google:8.8.8.8
+
+networks:
+  default:
+    external:
+      name: mars-service

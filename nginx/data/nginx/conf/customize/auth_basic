@@ -1,0 +1,3 @@
+auth_basic "Member Login";
+auth_basic_user_file /etc/nginx/customize-conf/auth_basic_passwd;
+

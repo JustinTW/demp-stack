@@ -1,0 +1,5 @@
+
+# */5 *   * * *   root    bash /opt/wallet-server/.utils/bash/namecheap-ddns/cache
+# */5 *   * * *   root    bash /opt/wallet-server/.utils/bash/namecheap-ddns/service
+
+

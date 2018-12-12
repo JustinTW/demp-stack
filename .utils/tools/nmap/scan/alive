@@ -1,0 +1,4 @@
+#!/bin/bash
+
+time docker exec -i nmap nmap -sP -T5 --min-parallelism 100 --max-parallelism 256 172.16.8.0/22 >> alive.`date +%Y%m%d`.log
+

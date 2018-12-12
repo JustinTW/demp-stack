@@ -1,0 +1,28 @@
+#!/bin/bash
+
+function perform (){
+  token=${1:-default}
+  channel=${2:-default}
+  before=${3:-2}
+  perform=${4}
+
+  sudo docker run  --name pyenv_for_cronjob  pyenv /usr/local/bin/slack-cleaner --token $token \
+    --message --bot \
+    --channel $channel \
+    --before `date +%Y%m%d --date="$before days ago"` \
+    $perform
+
+  sudo docker rm pyenv_for_cronjob
+}
+
+function slack_clean_msg (){
+  token=${1:-default}
+  channel=${2:-default}
+  before=${3:-2}
+
+  perform $token $channel $before --perform
+  perform $token $channel $before --perform
+  perform $token $channel $before --perform
+ 
+}
+
