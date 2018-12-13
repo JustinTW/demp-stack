@@ -17,8 +17,7 @@ server {
 
   location / {
     default_type application/json;
-    add_header 'Access-Control-Allow-Origin' '*';
-    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS PUT';
+    include /etc/nginx/customize/allow_cross_site.conf;
     try_files $uri $uri/ =404;
   }
 }
