@@ -1,5 +1,8 @@
+
+
+# wait for all container boot up
 sleep 90
+# restart nginx after all other container boot finish
+cd /opt/wallet-server/nginx && make restart
 
-# bash /opt/wallet-server/.utils/bash/namecheap-ddns/cache
-# bash /opt/wallet-server/.utils/bash/namecheap-ddns/service
-
+exit 0
