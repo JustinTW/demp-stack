@@ -1,0 +1,14 @@
+server {
+  listen 80;
+  server_name SNAME SNAME.*;
+
+  access_log /var/log/nginx/SNAME.http.access.log;
+  error_log /var/log/nginx/SNAME.http.error.log;
+
+  include /etc/nginx/customize/4xx_pages.conf;
+
+  location / {
+    include /etc/nginx/customize/reverse_proxy.conf;
+    proxy_pass http://internal_SNAME_http_hosts;
+  }
+}

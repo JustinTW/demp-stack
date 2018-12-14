@@ -1,5 +1,3 @@
-# app = exchange-rate
-
 server {
   listen 80;
   server_name exchange-rate exchange-rate.*;
@@ -7,17 +5,15 @@ server {
   access_log /var/log/nginx/exchange-rate.http.access.log;
   error_log /var/log/nginx/exchange-rate.http.error.log;
 
-  error_page  403  /error_403.html;
-    location = /error_403.html {
-    root   /usr/share/nginx/html/pages;
-  }
+  include /etc/nginx/customize/4xx_pages.conf;
+  include /etc/nginx/customize/default_favicon.conf;
 
   root /var/www/exchange-rate;
   index index.html;
 
   location / {
     default_type application/json;
-    include /etc/nginx/customize/allow_cross_site.conf;
+    include /etc/nginx/customize/header_cross_site.conf;
     try_files $uri $uri/ =404;
   }
 }

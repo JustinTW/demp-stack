@@ -18,22 +18,22 @@ function main (){
   find /mnt/nas/backup/redmine -mtime +4 -exec rm {} \;
 
   # move gitlab backup to nas
-  DIR=/opt/wallet-server/apps/gitlab/data/gitlab/gitlab/backups
+  DIR=/opt/web-service/apps/gitlab/data/gitlab/gitlab/backups
   if [ "$(ls -A $DIR)" ]; then
     mv $DIR/*.tar /mnt/nas/backup/gitlab/ &>/dev/null || true
   fi
 
   # move redmine backup to nas
-  DIR=/opt/wallet-server/apps/redmine/data/redmine/backups
+  DIR=/opt/web-service/apps/redmine/data/redmine/backups
   if [ "$(ls -A $DIR)" ]; then
     mv $DIR/*.tar /mnt/nas/backup/redmine/ &>/dev/null || true
   fi
 
   # backup harbor
-  rsync -rvh /opt/wallet-server/apps/harbor/data /mnt/nas/backup/harbor --delete
+  rsync -rvh /opt/web-service/apps/harbor/data /mnt/nas/backup/harbor --delete
 
   # backup testlink
-  rsync -rvh /opt/wallet-server/apps/testlink/data /mnt/nas/backup/testlink --delete
+  rsync -rvh /opt/web-service/apps/testlink/data /mnt/nas/backup/testlink --delete
 
   # clean slack msg
   slack_clean_msg xoxp-296482059655-307994224163-335081351622-794b48788c70d939d82b72e88037a6b0 droneci 2

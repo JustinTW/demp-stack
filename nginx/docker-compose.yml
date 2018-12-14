@@ -5,7 +5,7 @@ services:
     # restart: always
     build:
       context: .
-      dockerfile: Dockerfile.df
+      dockerfile: Dockerfile
     image: marsblockchain/nginx
     container_name: nginx
     hostname: nginx
@@ -16,10 +16,9 @@ services:
       - ./data/nginx/conf/upstream.conf:/etc/nginx/conf.d/upstream.conf:rw
       - ./data/nginx/conf/customize:/etc/nginx/customize:rw
       - ./data/nginx/sites-enabled:/etc/nginx/sites-enabled:rw
-      - ./data/log:/var/log/nginx:rw
-      - ./data/pages:/usr/share/nginx/html/pages:rw
+      - ./data/nginx/log:/var/log/nginx:rw
       - ./data/www:/var/www:rw
 networks:
   default:
     external:
-      name: mars-service
+      name: web-service

@@ -15,6 +15,7 @@ export $(shell sed 's/=.*//' $(dpl))
 
 # You can change the default docker-compose with `make COMPOSE_FILE="docker-compose_special.yml"`
 COMPOSE_FILE ?= docker-compose.yml
+export COMPOSE_FILE $(COMPOSE_FILE)
 
 VERSION=$(shell ./version.sh)
 

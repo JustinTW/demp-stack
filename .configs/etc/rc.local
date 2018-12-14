@@ -3,6 +3,6 @@
 # wait for all container boot up
 sleep 90
 # restart nginx after all other container boot finish
-cd /opt/wallet-server/nginx && make restart
+cd /opt/web-service/nginx && make restart
 
 exit 0

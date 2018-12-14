@@ -5,7 +5,7 @@ services:
     restart: always
     build:
       context: .
-      dockerfile: Dockerfile.df
+      dockerfile: Dockerfile
     image: marsblockchain/pma
     container_name: pma
     hostname: pma
@@ -21,4 +21,4 @@ services:
 networks:
   default:
     external:
-      name: mars-service
+      name: web-service

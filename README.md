@@ -13,8 +13,8 @@ This repository follows [Semantic release](https://github.com/semantic-release/s
 ```
 sudo -i
 cd /opt
-git clone git@github.com:MarsBlockchain/wallet-landing-page-server.git wallet-server
-cd wallet-server
+git clone git@github.com:MarsBlockchain/wallet-landing-page-server.git web-service
+cd web-service
 ```
 
 ### Boot up containers
@@ -26,13 +26,13 @@ make up
 ### Setup nginx config
 
 ```
-cd /opt/wallet-server/nginx/data/nginx
+cd /opt/web-service/nginx/data/nginx
 
 # write/edit your config for nginx in ./sites-enabled folder
 vi ./sites-enabled/***
 
 # reload nginx
-cd /opt/wallet-server/nginx
+cd /opt/web-service/nginx
 make reload
 
 # or restart nginx

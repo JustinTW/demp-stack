@@ -1,2 +1,8 @@
+.DS_Store
 *.swp
+
+
+# nginx
+nginx/data/nginx/log/*
 nginx/data/www/*
+!nginx/data/www/.static

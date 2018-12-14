@@ -1,9 +1,3 @@
-# proxy type: allow-http-url
-
-# replace keyword below
-# app = pma
-# inter_host = internal_pma_http_hosts
-
 server {
   listen 80;
   server_name pma pma.*;
@@ -11,20 +5,10 @@ server {
   access_log /var/log/nginx/pma.http.access.log;
   error_log /var/log/nginx/pma.http.error.log;
 
-  error_page  403  /error_403.html;
-    location = /error_403.html {
-    root   /usr/share/nginx/html/pages;
-  }
+  include /etc/nginx/customize/4xx_pages.conf;
 
   location / {
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Forwarded-For $remote_addr;
-    proxy_set_header X-Forwarded-Host $server_name;
-    proxy_http_version 1.1;
-    proxy_pass_request_headers on;
-    proxy_set_header Connection "keep-alive";
+    include /etc/nginx/customize/reverse_proxy.conf;
     proxy_pass http://internal_pma_http_hosts;
   }
 }

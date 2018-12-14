@@ -24,4 +24,4 @@ services:
 networks:
   default:
     external:
-      name: mars-service
+      name: web-service

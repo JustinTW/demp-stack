@@ -2,5 +2,5 @@
 
 set -e
 
-cd /opt/wallet-server/db/.tools/scripts && /bin/bash db-backup >> /var/log/mars-cronjob.log
+cd /opt/web-service/db/.tools/scripts && /bin/bash db-backup >> /var/log/web-servicecronjob.log
 

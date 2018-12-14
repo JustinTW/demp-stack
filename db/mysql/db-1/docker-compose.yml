@@ -5,7 +5,7 @@ services:
     restart: always
     build:
       context: .
-      dockerfile: Dockerfile.df
+      dockerfile: Dockerfile
     image: marsblockchain/percona-galera
     container_name: mysql-db-1
     hostname: mysql-db-1
@@ -34,4 +34,4 @@ services:
 networks:
   default:
     external:
-      name: mars-service
+      name: web-service

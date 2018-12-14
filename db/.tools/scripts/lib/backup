@@ -36,7 +36,7 @@ function backup_pg (){
   mkdir -p $NASDIR/$CTNAME
   sudo docker exec -i $CTNAME \
     pg_dump $DBNAME -U $PGUSER -f /data/shared/$DATETIME-$CTNAME-$DBNAME.sql
-  mv /opt/wallet-server/db/postgresql/db-1/data/shared/$DATETIME-$CTNAME-$DBNAME.sql $NASDIR/$CTNAME/$DATETIME-$CTNAME-$DBNAME.sql &>/dev/null
+  mv /opt/web-service/db/postgresql/db-1/data/shared/$DATETIME-$CTNAME-$DBNAME.sql $NASDIR/$CTNAME/$DATETIME-$CTNAME-$DBNAME.sql &>/dev/null
   printf ", size: "
   ls -alh $NASDIR/$CTNAME/$DATETIME-$CTNAME-$DBNAME.sql | awk '{print $5}'
 }
