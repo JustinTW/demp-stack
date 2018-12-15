@@ -18,47 +18,56 @@ COMPOSE_FILE ?= docker-compose.yml
 
 VERSION=$(shell ./version.sh)
 
+MAKE = make --no-print-directory
 EXEC = @./.utils/bash/main exec
+ENTRYPOINT = nginx
 
 # HELP
 .PHONY: help
 
 help: ## This help.
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
-	@echo ''
-	@./.utils/bash/main ps
 
 .DEFAULT_GOAL := help
 
 # Build and run the container
-up: ## Boot up container
-	dirs=$(shell ls 'apps')
-	@$(foreach dir,$(dirs),echo $(dir);)
+up: ## Boot up
+	@$(MAKE) up -C $(ENTRYPOINT)
 
 restart: up ## Restart container
 
 stop: ## Stop running containers
-	@./.utils/bash/main stop
+	# Stop apps
+	@$(foreach c,$(shell ls ./apps),$(MAKE) -C ./apps/$(c) stop && ) true
+	# Stop mysql
+	@$(foreach c,$(shell ls ./db/mysql),$(MAKE) -C ./db/mysql/$(c) stop && ) true
+	# Stop postgresql
+	@$(foreach c,$(shell ls ./db/postgresql),$(MAKE) -C ./db/postgresql/$(c) stop && ) true
+	# Stop nginx
+	@$(MAKE) stop -C $(ENTRYPOINT)
 
 ps: ## List running containers
-	@./.utils/bash/main ps
+	# apps status
+	@$(foreach c,$(shell ls ./apps),$(MAKE) -C ./apps/$(c) ps && ) true
+	# mysql status
+	@$(foreach c,$(shell ls ./db/mysql),$(MAKE) -C ./db/mysql/$(c) ps && ) true
+	# postgresql status
+	@$(foreach c,$(shell ls ./db/postgresql),$(MAKE) -C ./db/postgresql/$(c) ps && ) true
+	@$(MAKE) ps -C $(ENTRYPOINT)
+	@echo ''
+	@docker ps
 
 at: ensure-env-alive ## Attach running containers
-	@./.utils/bash/main at
+	@$(MAKE) at -C $(ENTRYPOINT)
 
 logs: ## Fetch the logs of running containers
-	@./.utils/bash/main logs
-
-build: ensure-env-alive ## Build Project
-	$(EXEC) make build
+	@$(MAKE) logs -C $(ENTRYPOINT)
 
 ensure-env-alive:
-	@./.utils/bash/main ensure-env-alive
+	@$(MAKE) ensure-env-alive -C $(ENTRYPOINT)
 
 clean: ## Clean the generated/compiles files
-	@sudo \rm -rf .docker/data/wp-mysql
-	@echo 'clean mysql data success !!'
-	@echo 'please restart docker by typing: make up'
+	@echo Nothing to do.
 
 version: ## output to version
 	@echo $(VERSION)
