@@ -15,6 +15,9 @@ sudo -i
 cd /opt
 git clone git@github.com:MarsBlockchain/wallet-landing-page-server.git web-service
 cd web-service
+
+# Optional: default db password for `root` is: `123456`, you can change password in file: `.env/config.env`
+vi .env/config.env
 ```
 
 ### Boot up containers
