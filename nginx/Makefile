@@ -21,6 +21,7 @@ VERSION=$(shell ./version.sh)
 
 MAKE = make --no-print-directory
 EXEC = @../.utils/bash/main exec
+ENSURE_DEPS = $(foreach c,$(shell ls ../apps),$(MAKE) -C ../apps/$(c) ensure-env-alive && ) true
 
 # HELP
 .PHONY: help
@@ -35,7 +36,7 @@ help: ## This help.
 # Build and run the container
 up: ## Boot up container
 	# Ensure dependancy containers alive
-	@$(foreach c,$(shell ls ../apps),$(MAKE) -C ../apps/$(c) ensure-env-alive && ) true
+	@$(ENSURE_DEPS)
 	# Boot up nginx
 	@../.utils/bash/main up
 
@@ -60,6 +61,7 @@ build: ensure-env-alive ## Build Project
 	$(EXEC) $(MAKE) build
 
 ensure-env-alive:
+	@$(ENSURE_DEPS)
 	@../.utils/bash/main ensure-env-alive
 
 clean: ## Clean the generated/compiles files
