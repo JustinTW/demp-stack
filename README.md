@@ -21,7 +21,7 @@ vi .env/config.env
 
 # Optional: customize service name by replace `web-stack` on all files
 find . -type f -name "*" -print0 | xargs -0 sed -i "s/web-stack/my-web-service/g"
-
+mv /opt/web-stack /opt/my-web-service
 ```
 
 ### Boot up containers
