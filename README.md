@@ -13,7 +13,7 @@ This repository follows [Semantic release](https://github.com/semantic-release/s
 ```
 sudo -i
 cd /opt
-git clone git@github.com:JustinTW/web-server.git web-service
+git clone git@github.com:JustinTW/docker-web-server-env.git web-service
 cd web-service
 
 # Optional: default db password for `root` is: `123456`, you can change password in file: `.env/config.env`
