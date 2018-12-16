@@ -9,9 +9,9 @@ services:
       - ./data/shared:/data/shared:rw
       - ./data/postgresql:/var/lib/postgresql:Z
     env_file:
-      - ../../.env/cache.env
-      - ../../.env/config.env
-      - ../../.env/deploy.env
+      - ../../../.env/cache.env
+      - ../../../.env/config.env
+      - ../../../.env/deploy.env
     ports:
       - 5432:5432
 networks:
