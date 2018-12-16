@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.df
-    image: marsblockchain/nmap
+    image: web-service/nmap
     container_name: nmap
     hostname: nmap.hopebaytech.com
     volumes:

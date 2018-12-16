@@ -5,15 +5,15 @@ server {
   access_log /var/log/nginx/exchange-rate.http.access.log;
   error_log /var/log/nginx/exchange-rate.http.error.log;
 
-  include /etc/nginx/customize/4xx_pages.conf;
-  include /etc/nginx/customize/default_favicon.conf;
+  include /etc/nginx/conf.d/customize/4xx_pages.conf;
+  include /etc/nginx/conf.d/customize/default_favicon.conf;
 
   root /var/www/exchange-rate;
   index index.html;
 
   location / {
     default_type application/json;
-    include /etc/nginx/customize/header_cross_site.conf;
+    include /etc/nginx/conf.d/customize/header_cross_site.conf;
     try_files $uri $uri/ =404;
   }
 }

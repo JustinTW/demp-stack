@@ -6,18 +6,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: marsblockchain/pma
+    image: web-service/pma
     container_name: pma
     hostname: pma
     volumes:
       - ./data/shared:/data/shared:rw
       - ./data/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:rw
-    #extra_hosts:
-    #  - mysql-db-1:172.16.21.211
-    #  - mysql-db-2:172.16.21.212
-    #  - mysql-db-3:172.16.21.206
-    #  - db-02:172.16.0.101
-    #  - db-03:172.16.0.102
 networks:
   default:
     external:

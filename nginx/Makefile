@@ -1,19 +1,15 @@
-# You can change the default config with `make cnf="config_special.env" build`
 cachef ?= ../.env/cache.env
 include $(cachef)
 export $(shell sed 's/=.*//' $(cachef))
 
-# You can change the default config with `make cnf="config_special.env" build`
 cnf ?= ../.env/config.env
 include $(cnf)
 export $(shell sed 's/=.*//' $(cnf))
 
-# You can change the default deploy config with `make dpl="deploy_special.env" release`
 dpl ?= ../.env/deploy.env
 include $(dpl)
 export $(shell sed 's/=.*//' $(dpl))
 
-# You can change the default docker-compose with `make COMPOSE_FILE="docker-compose_special.yml"`
 COMPOSE_FILE ?= docker-compose.yml
 export COMPOSE_FILE $(COMPOSE_FILE)
 

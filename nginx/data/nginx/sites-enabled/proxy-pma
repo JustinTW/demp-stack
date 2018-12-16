@@ -5,10 +5,10 @@ server {
   access_log /var/log/nginx/pma.http.access.log;
   error_log /var/log/nginx/pma.http.error.log;
 
-  include /etc/nginx/customize/4xx_pages.conf;
+  include /etc/nginx/conf.d/customize/4xx_pages.conf;
 
   location / {
-    include /etc/nginx/customize/reverse_proxy.conf;
+    include /etc/nginx/conf.d/customize/reverse_proxy.conf;
     proxy_pass http://internal_pma_http_hosts;
   }
 }

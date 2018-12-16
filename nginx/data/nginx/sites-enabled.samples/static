@@ -5,7 +5,7 @@ server {
   access_log /var/log/nginx/SNAME.http.access.log;
   error_log /var/log/nginx/SNAME.http.error.log;
 
-  include /etc/nginx/customize/4xx_pages.conf;
+  include /etc/nginx/conf.d/customize/4xx_pages.conf;
 
   root /var/www/SNAME;
   index index.html;

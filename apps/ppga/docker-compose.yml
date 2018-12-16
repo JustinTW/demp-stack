@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: marsblockchain/ppga
+    image: web-service/ppga
     container_name: ppga
     hostname: ppga
     environment:

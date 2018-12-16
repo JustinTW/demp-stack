@@ -6,17 +6,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.df
-    image: marsblockchain/APPNAME
+    image: web-service/APPNAME
     container_name: APPNAME
     hostname: APPNAME
     volumes:
       - ./data/shared:/data/shared:rw
-    #environment:
-    #  SERVICE_DISCOVERY: env
-    #ports:
-    #  - 172.16.0.100:4568:4568
-    #extra_hosts:
-    #  - google:8.8.8.8
+    # ports:
+    #  - 4568:4568
 
 networks:
   default:

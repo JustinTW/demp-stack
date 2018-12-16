@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.df
-    image: marsblockchain/pyenv
+    image: web-service/pyenv
     container_name: pyenv
     hostname: pyenv
     volumes:

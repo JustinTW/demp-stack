@@ -6,15 +6,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: marsblockchain/nginx
+    image: web-service/nginx
     container_name: nginx
     hostname: nginx
     ports:
       - "80:80/tcp"
     volumes:
-      - ./data/nginx/conf/web.conf:/etc/nginx/conf.d/web.conf:rw
-      - ./data/nginx/conf/upstream.conf:/etc/nginx/conf.d/upstream.conf:rw
-      - ./data/nginx/conf/customize:/etc/nginx/customize:rw
+      - ./data/nginx/conf:/etc/nginx/conf.d:rw
       - ./data/nginx/sites-enabled:/etc/nginx/sites-enabled:rw
       - ./data/nginx/log:/var/log/nginx:rw
       - ./data/www:/var/www:rw

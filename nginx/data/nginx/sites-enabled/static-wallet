@@ -5,8 +5,8 @@ server {
   access_log /var/log/nginx/wallet.http.access.log;
   error_log /var/log/nginx/wallet.http.error.log;
 
-  include /etc/nginx/customize/4xx_pages.conf;
-  include /etc/nginx/customize/default_favicon.conf;
+  include /etc/nginx/conf.d/customize/4xx_pages.conf;
+  include /etc/nginx/conf.d/customize/default_favicon.conf;
 
   root /var/www/wallet;
   index index.html;

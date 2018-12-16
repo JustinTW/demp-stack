@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.df
-    image: marsblockchain/ubuntu
+    image: web-service/ubuntu
     container_name: ubuntu
     hostname: ubuntu
     volumes:

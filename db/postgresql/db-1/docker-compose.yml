@@ -3,7 +3,7 @@ version: "3"
 services:
   pg-db-1:
     restart: always
-    image: marsblockchain/sameersbn/postgresql:9.6-2
+    image: web-service/sameersbn/postgresql:9.6-2
     container_name: pg-db-1
     volumes:
       - ./data/shared:/data/shared:rw
