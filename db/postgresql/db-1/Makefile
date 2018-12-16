@@ -1,24 +1,20 @@
-# You can change the default config with `make cnf="config_special.env" build`
 cachef ?= ../../../.env/cache.env
 include $(cachef)
 export $(shell sed 's/=.*//' $(cachef))
 
-# You can change the default config with `make cnf="config_special.env" build`
 cnf ?= ../../../.env/config.env
 include $(cnf)
 export $(shell sed 's/=.*//' $(cnf))
 
-# You can change the default deploy config with `make dpl="deploy_special.env" release`
 dpl ?= ../../../.env/deploy.env
 include $(dpl)
 export $(shell sed 's/=.*//' $(dpl))
 
-# You can change the default docker-compose with `make COMPOSE_FILE="docker-compose_special.yml"`
 COMPOSE_FILE ?= docker-compose.yml
 
 VERSION=$(shell ./version.sh)
-
 EXEC = @../../../.utils/bash/main exec
+MAKE = make --no-print-directory
 
 # HELP
 .PHONY: help
@@ -32,6 +28,8 @@ help: ## This help.
 
 # Build and run the container
 up: ## Boot up container
+	@sudo mkdir -p ./data/postgresql
+	@sudo chmod 777 ./data/postgresql -R
 	@../../../.utils/bash/main up
 
 restart: up ## Restart container
@@ -54,7 +52,9 @@ build: ensure-env-alive ## Build Project
 ensure-env-alive:
 	@../../../.utils/bash/main ensure-env-alive
 
-clean: ## Clean the generated/compiles files
-	@echo Nothing to do.
+clean: stop## Clean the generated/compiles files
+	@sudo rm -rf ./data/postgresql
+	@$(MAKE) up
+
 version: ## output to version
 	@echo $(VERSION)
