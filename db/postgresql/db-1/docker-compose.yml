@@ -3,7 +3,10 @@ version: "3"
 services:
   pg-db-1:
     restart: always
-    image: sameersbn/postgresql:9.6-2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: web-stack/postgresql
     container_name: pg-db-1
     volumes:
       - ./data/shared:/data/shared:rw
