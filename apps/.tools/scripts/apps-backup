@@ -36,7 +36,7 @@ function main (){
   rsync -rvh /opt/web-stack/apps/testlink/data /mnt/nas/backup/testlink --delete
 
   # clean slack msg
-  slack_clean_msg xoxp-296482059655-307994224163-335081351622-794b48788c70d939d82b72e88037a6b0 droneci 2
+  slack_clean_msg Slack_API_KEY_Here droneci 2
 
   # remove no-trunc docker img
   docker images --no-trunc | grep none | awk '{print $3}' | xargs docker rmi -f
