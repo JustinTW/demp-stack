@@ -18,8 +18,8 @@ function main (){
   backup_mysql mysql-db-1 snipeit
   backup_mysql mysql-db-1 testlink_production
 
-  backup_pg pg-db-1 gitlabhq_production root Moxa89191230
-  backup_pg pg-db-1 taigadb root Moxa89191230
+  backup_pg pg-db-1 gitlabhq_production root 123456
+  backup_pg pg-db-1 taigadb root 123456
 
   find /mnt/nas/backup/db-dump/mysql/mysql-db-1 -mtime +6 -exec rm {} \;
   find /mnt/nas/backup/db-dump/pg/pg-db-1 -mtime +6 -exec rm {} \;

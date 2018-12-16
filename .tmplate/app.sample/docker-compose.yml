@@ -9,6 +9,10 @@ services:
     image: web-service/APPNAME
     container_name: APPNAME
     hostname: APPNAME
+    env_file:
+      - ../../.env/cache.env
+      - ../../.env/config.env
+      - ../../.env/deploy.env
     volumes:
       - ./data/shared:/data/shared:rw
     # ports:

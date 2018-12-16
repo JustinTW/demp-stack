@@ -8,11 +8,10 @@ services:
     volumes:
       - ./data/shared:/data/shared:rw
       - ./data/postgresql:/var/lib/postgresql:Z
-    environment:
-      - DB_USER=root
-      - DB_PASS=Moxa89191230
-      - DB_NAME=gitlabhq_production,test
-      - DB_EXTENSION=pg_trgm
+    env_file:
+      - ../../.env/cache.env
+      - ../../.env/config.env
+      - ../../.env/deploy.env
     ports:
       - 5432:5432
 networks:

@@ -9,6 +9,10 @@ services:
     image: web-service/pma
     container_name: pma
     hostname: pma
+    env_file:
+      - ../../.env/cache.env
+      - ../../.env/config.env
+      - ../../.env/deploy.env
     volumes:
       - ./data/shared:/data/shared:rw
       - ./data/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:rw

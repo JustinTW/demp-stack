@@ -9,13 +9,10 @@ services:
     image: web-service/ppga
     container_name: ppga
     hostname: ppga
-    environment:
-      DB_HOST: pg-db-1
-      DB_PORT: 5432
-    #extra_hosts:
-    #  - pg-db-1:172.16.21.211
-    #  - db-02:172.16.0.101
-    #  - db-03:172.16.0.102
+    env_file:
+      - ../../.env/cache.env
+      - ../../.env/config.env
+      - ../../.env/deploy.env
 networks:
   default:
     external:

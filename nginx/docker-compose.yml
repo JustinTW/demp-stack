@@ -9,6 +9,10 @@ services:
     image: web-service/nginx
     container_name: nginx
     hostname: nginx
+    env_file:
+      - ../.env/cache.env
+      - ../.env/config.env
+      - ../.env/deploy.env
     ports:
       - "80:80/tcp"
     volumes:

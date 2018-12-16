@@ -9,16 +9,17 @@ services:
     image: web-service/percona-galera
     container_name: mysql-db-1
     hostname: mysql-db-1
+    env_file:
+      - ../../../.env/cache.env
+      - ../../../.env/config.env
+      - ../../../.env/deploy.env
     environment:
       # first bootstrap node
       BOOTSTRAP: 1
       # first node host name
       # CLUSTER_MEMBERS: db-03
       # DEBUG: 1
-      MYSQL_PASS: Moxa89191230
-      REP_PASS: replicate
       HOST: mysql-db-1
-      SERVICE_DISCOVERY: env
     extra_hosts:
       - mysql-db-1:172.16.21.211
       - mysql-db-2:172.16.21.212

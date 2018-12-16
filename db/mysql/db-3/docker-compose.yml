@@ -10,16 +10,17 @@ services:
     container_name: mysql-db-3
     hostname: mysql-db-3
     network_mode: host
+    env_file:
+      - ../../../.env/cache.env
+      - ../../../.env/config.env
+      - ../../../.env/deploy.env
     environment:
       # first bootstrap node
       # BOOTSTRAP: 1
       # first node host name
       CLUSTER_MEMBERS: mysql-db-1
       # DEBUG: 1
-      MYSQL_PASS: Moxa89191230
-      REP_PASS: replicate
       HOST: mysql-db-3
-      SERVICE_DISCOVERY: env
     extra_hosts:
       - mysql-db-1:172.16.21.211
       - mysql-db-2:172.16.21.212
