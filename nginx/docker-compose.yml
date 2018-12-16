@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: web-service/nginx
+    image: web-stack/nginx
     container_name: nginx
     hostname: nginx
     env_file:
@@ -23,4 +23,4 @@ services:
 networks:
   default:
     external:
-      name: web-service
+      name: web-stack

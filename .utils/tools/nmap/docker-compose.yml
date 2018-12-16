@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.df
-    image: web-service/nmap
+    image: web-stack/nmap
     container_name: nmap
     hostname: nmap.hopebaytech.com
     volumes:
@@ -22,4 +22,4 @@ services:
 networks:
   default:
     external:
-      name: web-service
+      name: web-stack

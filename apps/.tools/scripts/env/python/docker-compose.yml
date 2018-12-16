@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.df
-    image: web-service/pyenv
+    image: web-stack/pyenv
     container_name: pyenv
     hostname: pyenv
     volumes:
@@ -24,4 +24,4 @@ services:
 networks:
   default:
     external:
-      name: web-service
+      name: web-stack

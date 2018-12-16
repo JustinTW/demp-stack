@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: web-service/pma
+    image: web-stack/pma
     container_name: pma
     hostname: pma
     env_file:
@@ -19,4 +19,4 @@ services:
 networks:
   default:
     external:
-      name: web-service
+      name: web-stack

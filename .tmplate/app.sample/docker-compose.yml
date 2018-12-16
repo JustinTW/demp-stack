@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.df
-    image: web-service/APPNAME
+    image: web-stack/APPNAME
     container_name: APPNAME
     hostname: APPNAME
     env_file:
@@ -21,4 +21,4 @@ services:
 networks:
   default:
     external:
-      name: web-service
+      name: web-stack

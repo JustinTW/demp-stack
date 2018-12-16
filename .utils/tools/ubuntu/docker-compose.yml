@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.df
-    image: web-service/ubuntu
+    image: web-stack/ubuntu
     container_name: ubuntu
     hostname: ubuntu
     volumes:
@@ -23,4 +23,4 @@ services:
 networks:
   default:
     external:
-      name: web-service
+      name: web-stack

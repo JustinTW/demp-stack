@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: web-service/ppga
+    image: web-stack/ppga
     container_name: ppga
     hostname: ppga
     env_file:
@@ -16,4 +16,4 @@ services:
 networks:
   default:
     external:
-      name: web-service
+      name: web-stack

@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: web-service/percona-galera
+    image: web-stack/percona-galera
     container_name: mysql-db-1
     hostname: mysql-db-1
     env_file:
@@ -35,4 +35,4 @@ services:
 networks:
   default:
     external:
-      name: web-service
+      name: web-stack
