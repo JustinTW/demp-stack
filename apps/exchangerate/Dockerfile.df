@@ -1,0 +1,13 @@
+FROM golang
+
+WORKDIR /go/src/app
+
+# Setup ssh key for github private repository
+ADD ./data/keys/id_rsa /root/.ssh/id_rsa
+RUN chown root: /root/.ssh -R
+RUN chmod 600 /root/.ssh -R
+
+# Get go package from ssh
+RUN git config --global url."git@github.com:".insteadOf "https://github.com/"
+
+ENTRYPOINT /usr/bin/tail -f /dev/null

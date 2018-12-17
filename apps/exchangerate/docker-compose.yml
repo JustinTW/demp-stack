@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  exchangerate:
+    # restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.df
+    image: web-stack/exchangerate
+    container_name: web-stack-exchangerate
+    hostname: exchangerate
+    env_file:
+      - ../../.env/cache.env
+      - ../../.env/config.env
+      - ../../.env/deploy.env
+    volumes:
+      - ./data/shared:/data/shared:rw
+      - ./src:/go/src/app:rw
+
+    # ports:
+    #  - 4568:4568
+
+networks:
+  default:
+    external:
+      name: web-stack
