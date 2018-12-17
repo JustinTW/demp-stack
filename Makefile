@@ -46,7 +46,7 @@ stop: ## Stop running containers
 	@$(MAKE) stop -C $(ENTRYPOINT)
 
 ps: ## List running containers
-	@docker ps |grep web-stack
+	@docker ps
 
 at: ensure-env-alive ## Attach running containers
 	@$(MAKE) at -C $(ENTRYPOINT)
