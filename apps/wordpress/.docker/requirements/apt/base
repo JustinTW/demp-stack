@@ -1,0 +1,13 @@
+apt-transport-https
+ca-certificates
+gnupg2
+libbz2-dev
+libfreetype6-dev
+libjpeg62-turbo-dev
+libmcrypt-dev
+libmemcached-dev
+libpng-dev
+libxslt1-dev
+lsb-release
+sendmail
+wget

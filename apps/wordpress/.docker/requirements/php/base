@@ -1,0 +1,13 @@
+bz2
+calendar
+exif
+gd
+gettext
+mbstring
+mysqli
+pcntl
+pdo
+pdo_mysql
+sockets
+wddx
+xsl

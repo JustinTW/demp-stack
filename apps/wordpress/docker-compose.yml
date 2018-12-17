@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  wordpress:
+    # restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: web-stack/wordpress
+    container_name: web-stack-wordpress
+    hostname: wordpress
+    env_file:
+      - ../../.env/cache.env
+      - ../../.env/config.env
+      - ../../.env/deploy.env
+    volumes:
+      - ./data/shared:/data/shared:rw
+    # ports:
+    #  - 4568:4568
+
+networks:
+  default:
+    external:
+      name: web-stack

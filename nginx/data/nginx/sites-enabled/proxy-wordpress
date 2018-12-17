@@ -1,0 +1,14 @@
+server {
+  listen 80;
+  server_name wordpress.*;
+
+  access_log /var/log/nginx/wordpress.http.access.log;
+  error_log /var/log/nginx/wordpress.http.error.log;
+
+  include /etc/nginx/conf.d/customize/4xx_pages.conf;
+
+  location / {
+    include /etc/nginx/conf.d/customize/reverse_proxy.conf;
+    proxy_pass http://internal_wordpress_http_hosts;
+  }
+}
