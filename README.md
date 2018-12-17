@@ -1,4 +1,4 @@
-# Docker with Nginx, DB and Reverse Proxy
+# DEMP: Docker, Nginx, Mariadb and PostgreSQL Stack
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
@@ -13,15 +13,15 @@ This repository follows [Semantic release](https://github.com/semantic-release/s
 ```
 sudo -i
 cd /opt
-git clone git@github.com:JustinTW/docker-nginx-db-reverse-proxy.git web-stack
-cd web-stack
+git clone git@github.com:JustinTW/demp-stack.git demp-stack
+cd demp-stack
 
 # Optional: default db password for `root` is: `123456`, you can change password in file: `.env/config.env`
 vi .env/config.env
 
-# Optional: customize service name by replace `web-stack` on all files
-find . -type f -name "*" -print0 | xargs -0 sed -i "s/web-stack/my-web-service/g"
-mv /opt/web-stack /opt/my-web-service
+# Optional: customize service name by replace `demp-stack` on all files
+find . -type f -name "*" -print0 | xargs -0 sed -i "s/demp-stack/my-web-service/g"
+mv /opt/demp-stack /opt/my-web-service
 ```
 
 ### Boot up containers
@@ -33,13 +33,13 @@ make up
 ### Customize nginx config
 
 ```
-cd /opt/web-stack/nginx/data/nginx
+cd /opt/demp-stack/nginx/data/nginx
 
 # write/edit your own config for nginx in ./sites-enabled folder
 vi ./sites-enabled/***
 
 # reload nginx
-cd /opt/web-stack/nginx
+cd /opt/demp-stack/nginx
 make reload
 
 # or restart nginx

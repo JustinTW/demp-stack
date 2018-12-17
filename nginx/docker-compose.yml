@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: web-stack/nginx
-    container_name: nginx
+    image: demp-stack/nginx
+    container_name: demp-stack-nginx
     hostname: nginx
     env_file:
       - ../.env/cache.env
@@ -23,4 +23,4 @@ services:
 networks:
   default:
     external:
-      name: web-stack
+      name: demp-stack

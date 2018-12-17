@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: web-stack/pma
-    container_name: pma
+    image: demp-stack/pma
+    container_name: demp-stack-pma
     hostname: pma
     env_file:
       - ../../.env/cache.env
@@ -19,4 +19,4 @@ services:
 networks:
   default:
     external:
-      name: web-stack
+      name: demp-stack

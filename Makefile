@@ -46,15 +46,7 @@ stop: ## Stop running containers
 	@$(MAKE) stop -C $(ENTRYPOINT)
 
 ps: ## List running containers
-	# apps status
-	@$(foreach c,$(shell ls ./apps),$(MAKE) -C ./apps/$(c) ps && ) true
-	# mysql status
-	@$(foreach c,$(shell ls ./db/mysql),$(MAKE) -C ./db/mysql/$(c) ps && ) true
-	# postgresql status
-	@$(foreach c,$(shell ls ./db/postgresql),$(MAKE) -C ./db/postgresql/$(c) ps && ) true
-	@$(MAKE) ps -C $(ENTRYPOINT)
-	@echo ''
-	@docker ps
+	@docker ps |grep demp-stack
 
 at: ensure-env-alive ## Attach running containers
 	@$(MAKE) at -C $(ENTRYPOINT)

@@ -2,5 +2,5 @@
 
 set -e
 
-cd /opt/web-stack/db/.tools/scripts && /bin/bash db-backup >> /var/log/web-stackcronjob.log
+cd /opt/demp-stack/db/.tools/scripts && /bin/bash db-backup >> /var/log/demp-stackcronjob.log
 

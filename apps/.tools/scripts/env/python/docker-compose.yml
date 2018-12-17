@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.df
-    image: web-stack/pyenv
-    container_name: pyenv
+    image: demp-stack/pyenv
+    container_name: demp-stack-pyenv
     hostname: pyenv
     volumes:
       - ./data/shared:/data/shared:rw
@@ -24,4 +24,4 @@ services:
 networks:
   default:
     external:
-      name: web-stack
+      name: demp-stack

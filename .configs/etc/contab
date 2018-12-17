@@ -1,5 +1,5 @@
 
-# */5 *   * * *   root    bash /opt/web-stack/.utils/bash/namecheap-ddns/cache
-# */5 *   * * *   root    bash /opt/web-stack/.utils/bash/namecheap-ddns/service
+# */5 *   * * *   root    bash /opt/demp-stack/.utils/bash/namecheap-ddns/cache
+# */5 *   * * *   root    bash /opt/demp-stack/.utils/bash/namecheap-ddns/service
 
 

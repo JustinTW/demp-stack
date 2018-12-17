@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: web-stack/postgresql
-    container_name: pg-db-1
+    image: demp-stack/postgresql
+    container_name: demp-stack-pg-db-1
     volumes:
       - ./data/shared:/data/shared:rw
       - ./data/postgresql:/var/lib/postgresql:Z
@@ -20,4 +20,4 @@ services:
 networks:
   default:
     external:
-      name: web-stack
+      name: demp-stack
