@@ -11,7 +11,6 @@ This repository follows [Semantic release](https://github.com/semantic-release/s
 ### Clone Repository and Change Password
 
 ```bash
-sudo -i
 cd /opt
 git clone git@github.com:JustinTW/demp-stack.git demp-stack
 cd demp-stack
