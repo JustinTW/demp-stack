@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: demp-stack/ppga
-    container_name: demp-stack-ppga
+    image: web-stack/ppga
+    container_name: web-stack-ppga
     hostname: ppga
     env_file:
       - ../../.env/cache.env
@@ -16,4 +16,4 @@ services:
 networks:
   default:
     external:
-      name: demp-stack
+      name: web-stack

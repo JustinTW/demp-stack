@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: demp-stack/percona-galera
-    container_name: demp-stack-mysql-db-3
+    image: web-stack/percona-galera
+    container_name: web-stack-mysql-db-3
     hostname: mysql-db-3
     network_mode: host
     env_file:

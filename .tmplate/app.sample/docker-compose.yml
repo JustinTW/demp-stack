@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.df
-    image: demp-stack/APPNAME
-    container_name: demp-stack-APPNAME
+    image: web-stack/APPNAME
+    container_name: web-stack-APPNAME
     hostname: APPNAME
     env_file:
       - ../../.env/cache.env
@@ -21,4 +21,4 @@ services:
 networks:
   default:
     external:
-      name: demp-stack
+      name: web-stack

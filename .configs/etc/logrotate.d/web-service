@@ -1,4 +1,4 @@
-/opt/demp-stack/nginx/data/nginx/log/*.log {
+/opt/web-stack/nginx/data/nginx/log/*.log {
     size 100M
     copytruncate
     rotate 8

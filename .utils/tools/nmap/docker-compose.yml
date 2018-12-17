@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.df
-    image: demp-stack/nmap
-    container_name: demp-stack-nmap
+    image: web-stack/nmap
+    container_name: web-stack-nmap
     hostname: nmap.hopebaytech.com
     volumes:
       - ./data/shared:/data/shared:rw
@@ -22,4 +22,4 @@ services:
 networks:
   default:
     external:
-      name: demp-stack
+      name: web-stack
