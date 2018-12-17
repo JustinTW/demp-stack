@@ -2,7 +2,7 @@ version: "3"
 
 services:
   pg-db-1:
-    restart: always
+    # restart: always
     build:
       context: .
       dockerfile: Dockerfile
