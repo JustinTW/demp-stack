@@ -11,7 +11,7 @@ This repository follows [Semantic release](https://github.com/semantic-release/s
 ### Clone Repository and Change Password
 
 ```bash
-git clone git@github.com:MarsBlockchain/docker-web-stack.git web-stack
+git clone git@github.com:MarsBlockchain/docker-web-dev-stack.git web-stack
 cd web-stack
 
 # Optional: default db password for `root` is: `123456`, you can change password in file: `.env/config.env`
