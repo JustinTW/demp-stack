@@ -10,7 +10,7 @@ This repository follows [Semantic release](https://github.com/semantic-release/s
 
 ### Clone Repository and Change Password
 
-```
+```bash
 sudo -i
 cd /opt
 git clone git@github.com:JustinTW/demp-stack.git demp-stack
@@ -32,7 +32,7 @@ make up
 
 ### Customize nginx config
 
-```
+```bash
 cd /opt/demp-stack/nginx/data/nginx
 
 # write/edit your own config for nginx in ./sites-enabled folder
