@@ -19,7 +19,6 @@ vi .env/config.env
 
 # Optional: customize service name by replace `web-stack` on all files
 find . -type f -name "*" -print0 | xargs -0 sed -i "s/web-stack/my-web-service/g"
-mv /opt/web-stack /opt/my-web-service
 ```
 
 ### Boot up containers
@@ -31,13 +30,13 @@ make up
 ### Customize nginx config
 
 ```bash
-cd /opt/web-stack/nginx/data/nginx
+cd nginx/data/nginx
 
-# write/edit your own config for nginx in ./sites-enabled folder
+# write / edit your own config for nginx in ./sites-enabled folder
 vi ./sites-enabled/***
 
 # reload nginx
-cd /opt/web-stack/nginx
+cd nginx
 make reload
 
 # or restart nginx
