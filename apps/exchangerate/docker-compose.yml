@@ -16,9 +16,8 @@ services:
     volumes:
       - ./data/shared:/data/shared:rw
       - ./src:/go/src/app:rw
-
-    # ports:
-    #  - 4568:4568
+    ports:
+      - 3000:3000
 
 networks:
   default:

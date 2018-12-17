@@ -41,6 +41,10 @@ ps: ## List running containers
 at: ensure-env-alive ## Attach running containers
 	@../../.utils/bash/main at
 
+dev: ensure-env-alive ## Attach running containers
+	$(EXEC) go get .
+	$(EXEC) go run exchangerate.go
+
 logs: ## Fetch the logs of running containers
 	@../../.utils/bash/main logs
 
