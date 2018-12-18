@@ -17,6 +17,7 @@ VERSION=$(shell ./version.sh)
 MAKE = make --no-print-directory
 EXEC = @./.utils/bash/main exec
 ENTRYPOINT = nginx
+WORDPRESS = ./apps/wordpress
 
 # HELP
 .PHONY: help
@@ -49,7 +50,7 @@ ps: ## List running containers
 	@docker ps
 
 at: ensure-env-alive ## Attach running containers
-	@$(MAKE) at -C $(ENTRYPOINT)
+	@$(MAKE) at -C $(WORDPRESS)
 
 logs: ## Fetch the logs of running containers
 	@$(MAKE) logs -C $(ENTRYPOINT)
