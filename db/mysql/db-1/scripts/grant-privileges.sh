@@ -21,3 +21,5 @@ if [ $? -eq 0 ]; then
 
   echo "grant-privileges success !!"
 fi
+
+docker exec -it web-stack-mysql-db-1 chmod 777 /var/lib/mysql -R
