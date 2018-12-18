@@ -30,13 +30,24 @@ cd apps/wordpress
 ./docker/scripts/grant-privileges.sh
 ```
 
+### Setup host name mapping
+
+```bash
+sudo vi /etc/hosts
+
+# add hostname mappings
+127.0.0.1  pma wordpress
+```
+
 ### Boot up containers
 
 ```
 make up
 ```
 
-go http://localhost/ to visit wordpress
+go http://wordpress/ to visit wordpress, default account: `root` / `123456`
+
+go http://pma/ to visit phpMyAdmin, default account: `root` / `123456`
 
 ### Attach Shell to Development Environment
 
