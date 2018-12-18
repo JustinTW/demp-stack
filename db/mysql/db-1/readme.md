@@ -2,5 +2,5 @@
 
 ```
 clean or rename old database
-docker exec -i mysql-db-1 mysql -u root redmine_production < /mnt/nas/backup/db/
+docker exec -i web-stack-mysql-db-1 mysql -u root redmine_production < /mnt/nas/backup/db/
 ```
