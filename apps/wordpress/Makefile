@@ -19,6 +19,7 @@ COMPOSE_FILE ?= docker-compose.yml
 VERSION=$(shell ./version.sh)
 
 EXEC = @../../.utils/bash/main exec
+ENSURE_DEPS = $(MAKE) ensure-env-alive -C ../../db/mysql/db-1
 
 # HELP
 .PHONY: help
@@ -32,6 +33,9 @@ help: ## This help.
 
 # Build and run the container
 up: ## Boot up container
+	# Ensure dependancy containers alive
+	@$(ENSURE_DEPS)
+	# Boot up wordpress
 	@../../.utils/bash/main up
 
 restart: up ## Restart container
