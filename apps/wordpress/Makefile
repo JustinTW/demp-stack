@@ -57,6 +57,7 @@ build: ensure-env-alive ## Build Project
 	$(EXEC) make build
 
 ensure-env-alive:
+	@$(ENSURE_DEPS)
 	@../../.utils/bash/main ensure-env-alive
 
 clean: ## Clean the generated/compiles files
