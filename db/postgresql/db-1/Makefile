@@ -27,17 +27,17 @@ help: ## This help.
 .DEFAULT_GOAL := help
 
 # Build and run the container
-up: ## Boot up container
+up: fix-permission ## Boot up container
 	@sudo mkdir -p ./data/postgresql
 	@sudo chmod 777 ./data/postgresql -R
 	@../../../.utils/bash/main up
 
 restart: up ## Restart container
 
-stop: ## Stop running containers
+stop: fix-permission ## Stop running containers
 	@../../../.utils/bash/main stop
 
-ps: ## List running containers
+ps: fix-permission ## List running containers
 	@../../../.utils/bash/main ps
 
 at: ensure-env-alive ## Attach running containers
@@ -49,12 +49,16 @@ logs: ## Fetch the logs of running containers
 build: ensure-env-alive ## Build Project
 	$(EXEC) make build
 
-ensure-env-alive:
+ensure-env-alive: fix-permission
 	@../../../.utils/bash/main ensure-env-alive
 
-clean: stop## Clean the generated/compiles files
+clean: stop fix-permission ## Clean the generated/compiles files
 	@sudo rm -rf ./data/postgresql
 	@$(MAKE) up
 
 version: ## output to version
 	@echo $(VERSION)
+
+fix-permission:
+	@sudo mkdir -p ./data/mysql
+	@sudo chmod 777 ./data/mysql -R
