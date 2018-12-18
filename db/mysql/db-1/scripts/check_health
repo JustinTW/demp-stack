@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker exec -it mysql-db-1 mysql -e "SHOW STATUS LIKE 'wsrep_local%'"
-docker exec -it mysql-db-1 mysql -e "SHOW STATUS LIKE 'wsrep_cluster%'"
-docker exec -it mysql-db-1 mysql -e "SHOW STATUS LIKE 'wsrep_ready%'"
+docker exec -it web-stack-mysql-db-1 mysql -e "SHOW STATUS LIKE 'wsrep_local%'"
+docker exec -it web-stack-mysql-db-1 mysql -e "SHOW STATUS LIKE 'wsrep_cluster%'"
+docker exec -it web-stack-mysql-db-1 mysql -e "SHOW STATUS LIKE 'wsrep_ready%'"
 
