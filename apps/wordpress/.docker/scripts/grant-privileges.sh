@@ -1,6 +1,8 @@
 #!/bin/bash
 
-docker exec -it web-stack-mysql-db-1 chmod 777 /var/lib/mysql -R
+# root for phpmyadmin
+docker exec -it web-stack-mysql-db-1 mysql -uroot \
+  -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'web-stack-pma.web-stack' IDENTIFIED BY '123456' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
 # create db for wordpress
 docker exec -it web-stack-mysql-db-1 mysql -uroot \
@@ -15,3 +17,5 @@ if [ $? -eq 0 ]; then
 
   echo "grant-privileges success !!"
 fi
+
+docker exec -it web-stack-mysql-db-1 chmod 777 /var/lib/mysql -R
