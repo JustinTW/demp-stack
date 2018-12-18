@@ -19,7 +19,8 @@ COMPOSE_FILE ?= docker-compose.yml
 VERSION=$(shell ./version.sh)
 
 EXEC = @../../.utils/bash/main exec
-ENSURE_DEPS = @$(MAKE) ensure-env-alive -C ../../db/mysql/db-1
+MAKE = make --no-print-directory
+ENSURE_DEPS = $(MAKE) ensure-env-alive -C ../../db/mysql/db-1
 
 # HELP
 .PHONY: help

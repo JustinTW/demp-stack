@@ -15,6 +15,7 @@ services:
       - ../../.env/deploy.env
     volumes:
       - ./data/shared:/data/shared:rw
+      - ./.docker/wordpress/wp-config.php:/var/www/html/wp-config.php:rw
     # ports:
     #  - 4568:4568
 
