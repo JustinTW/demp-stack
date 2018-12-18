@@ -13,6 +13,7 @@ This repository follows [Semantic release](https://github.com/semantic-release/s
 ```bash
 git clone git@github.com:MarsBlockchain/docker-web-dev-stack.git web-stack
 cd web-stack
+git checkout dev/wordpress
 
 # Optional: default db password for `root` is: `123456`, you can change password in file: `.env/config.env`
 vi .env/config.env
@@ -34,6 +35,8 @@ cd apps/wordpress
 ```
 make up
 ```
+
+go http://localhost/ to visit wordpress
 
 ### Attach Shell to Development Environment
 

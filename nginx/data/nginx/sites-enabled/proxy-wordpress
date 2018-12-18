@@ -1,6 +1,6 @@
 server {
-  listen 80;
-  server_name wordpress.*;
+  listen 80 default_server;
+  server_name wordpress wordpress.*;
 
   access_log /var/log/nginx/wordpress.http.access.log;
   error_log /var/log/nginx/wordpress.http.error.log;
