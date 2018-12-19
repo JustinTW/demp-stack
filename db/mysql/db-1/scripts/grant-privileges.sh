@@ -1,10 +1,11 @@
 #!/bin/bash
+source ../../../.env/config.env
 
 docker exec -it web-stack-mysql-db-1 chmod 777 /var/lib/mysql -R
 
 # root for phpmyadmin
 docker exec -it web-stack-mysql-db-1 mysql -uroot \
-  -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'web-stack-pma.web-stack' IDENTIFIED BY '123456' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+  -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'web-stack-pma.web-stack' IDENTIFIED BY '$MYSQL_PASS' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
 # create db for phpmyadmin
 docker exec -it web-stack-mysql-db-1 mysql -uroot \
@@ -13,7 +14,7 @@ docker exec -it web-stack-mysql-db-1 mysql -uroot \
 if [ $? -eq 0 ]; then
   # pma for phpmyadmin
   docker exec -it web-stack-mysql-db-1 mysql -uroot \
-    -e "GRANT ALL PRIVILEGES ON phpmyadmin.* TO 'pma'@'web-stack-pma.web-stack' IDENTIFIED BY '123456' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    -e "GRANT ALL PRIVILEGES ON phpmyadmin.* TO '$PMA_USERNAME'@'web-stack-pma.web-stack' IDENTIFIED BY '$PMA_PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
   # import db for phpmyadmin
   docker exec -i web-stack-mysql-db-1 mysql -uroot \

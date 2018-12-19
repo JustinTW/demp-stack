@@ -8,8 +8,6 @@ source $SCRIPTPATH/../../../.utils/bash/docker
 source $SCRIPTPATH/lib/backup
 
 function main (){
-
-
   backup_mysql mysql-db-1 drone
   backup_mysql mysql-db-1 mysql
   backup_mysql mysql-db-1 polr
@@ -18,8 +16,8 @@ function main (){
   backup_mysql mysql-db-1 snipeit
   backup_mysql mysql-db-1 testlink_production
 
-  backup_pg pg-db-1 gitlabhq_production root 123456
-  backup_pg pg-db-1 taigadb root 123456
+  backup_pg pg-db-1 gitlabhq_production root $MYSQL_PASS
+  backup_pg pg-db-1 taigadb root $MYSQL_PASS
 
   find /mnt/nas/backup/db-dump/mysql/mysql-db-1 -mtime +6 -exec rm {} \;
   find /mnt/nas/backup/db-dump/pg/pg-db-1 -mtime +6 -exec rm {} \;
