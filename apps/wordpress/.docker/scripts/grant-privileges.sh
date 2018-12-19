@@ -2,14 +2,14 @@
 
 # root for phpmyadmin
 docker exec -it web-stack-mysql-db-1 mysql -uroot \
-  -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'web-stack-pma.web-stack' IDENTIFIED BY '123456' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+  -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'web-stack-pma.web-stack' IDENTIFIED BY '$MYSQL_PASS' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
 # create db for wordpress
 docker exec -it web-stack-mysql-db-1 mysql -uroot \
   -e "CREATE DATABASE wordpress;"  > /dev/null 2>&1
 if [ $? -eq 0 ]; then
   docker exec -it web-stack-mysql-db-1 mysql -uroot \
-    -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'web-stack-wordpress.web-stack' IDENTIFIED BY '123456' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'web-stack-wordpress.web-stack' IDENTIFIED BY '$WORDPRESS_DB_PASS' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
   # import db for phpmyadmin
   docker exec -i web-stack-mysql-db-1 mysql -uroot \
