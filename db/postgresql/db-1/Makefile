@@ -29,7 +29,7 @@ help: ## This help.
 # Build and run the container
 up: fix-permission ## Boot up container
 	@sudo mkdir -p ./data/postgresql
-	@sudo chmod 777 ./data/postgresql -R
+	@sudo chmod -R 777 ./data/postgresql
 	@../../../.utils/bash/main up
 
 restart: up ## Restart container
@@ -61,4 +61,4 @@ version: ## output to version
 
 fix-permission:
 	@sudo mkdir -p ./data/mysql
-	@sudo chmod 777 ./data/mysql -R
+	@sudo chmod -R 777 ./data/mysql

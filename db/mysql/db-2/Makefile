@@ -60,4 +60,4 @@ version: ## output to version
 
 fix-permission:
 	@sudo mkdir -p ./data/mysql
-	@sudo chmod 777 ./data/mysql -R
+	@sudo chmod -R 777 ./data/mysql

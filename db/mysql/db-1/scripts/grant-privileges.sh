@@ -1,7 +1,7 @@
 #!/bin/bash
 source ../../../.env/config.env
 
-docker exec -it web-stack-mysql-db-1 chmod 777 /var/lib/mysql -R
+docker exec -it web-stack-mysql-db-1 chmod -R 777 /var/lib/mysql
 
 # root for phpmyadmin
 docker exec -it web-stack-mysql-db-1 mysql -uroot \
@@ -23,4 +23,4 @@ if [ $? -eq 0 ]; then
   echo "grant-privileges success !!"
 fi
 
-docker exec -it web-stack-mysql-db-1 chmod 777 /var/lib/mysql -R
+docker exec -it web-stack-mysql-db-1 chmod -R 777 /var/lib/mysql

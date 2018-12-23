@@ -2,8 +2,8 @@
 
 docker_chown (){
   sudo mkdir -p ./data
-  # sudo chown $USER: ./data -R
-  # sudo chmod 777 ./data -R
+  # sudo chown -R $USER: ./data
+  # sudo chmod -R 777 ./data
 }
 
 docker_create_network (){
